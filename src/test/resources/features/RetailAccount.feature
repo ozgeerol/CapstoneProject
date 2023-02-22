@@ -1,4 +1,4 @@
-Feature: Retail Application Account Feature
+            Feature: Retail Application Account Feature
 
   Background: 
     Given User is on retail website
@@ -49,4 +49,15 @@ Feature: Retail Application Account Feature
     When User click on Account option
     And User click on Card option
     And User click on remove option of card section
+
   #  Then payment details should be removed
+  @reggession
+  Scenario: Verify User can add an Address
+    When User click on Account option
+    And User click on Add address option
+    And user fill new address form with below information
+      | country       | fullName  | phoneNumber | streetAddress | apt | city         | state    | zipCode |
+      | United States | john john |  2405467890 |          6201 | 216 | Falls Church | Virginia |   22044 |
+    And User click Add Your Address button
+    Then a message should be displayed ‘Address Added Successfully’
+                                                                                                                                   

@@ -632,3 +632,33 @@
 2023-02-21 11:26:27,426 - logger_File -INFO - user clicked on Account option
 2023-02-21 11:26:27,504 - logger_File -INFO - user closed on card option
 2023-02-21 11:26:31,576 - logger_File -INFO - user clicked on remove option of card section
+2023-02-21 13:51:30,880 - logger_File -INFO - React App is equal to React App
+2023-02-21 13:51:30,999 - logger_File -INFO - User clicked on Sign in Option
+2023-02-21 13:51:31,167 - logger_File -INFO - user entered email ozy234@gmail.com and password America1@
+2023-02-21 13:51:31,229 - logger_File -INFO - user clicked on login button
+2023-02-21 13:51:31,844 - logger_File -INFO - user clicked on Account option
+2023-02-21 13:51:31,936 - logger_File -INFO - user clicked on add address option
+2023-02-21 18:49:29,820 - logger_File -INFO - React App is equal to React App
+2023-02-21 18:49:29,986 - logger_File -INFO - User clicked on Sign in Option
+2023-02-21 18:49:30,214 - logger_File -INFO - user entered email ozy234@gmail.com and password America1@
+2023-02-21 18:49:30,285 - logger_File -INFO - user clicked on login button
+2023-02-21 18:49:30,649 - logger_File -INFO - user clicked on Account option
+2023-02-21 18:49:30,790 - logger_File -INFO - user clicked on add address option
+2023-02-21 18:53:51,620 - logger_File -INFO - React App is equal to React App
+2023-02-21 18:53:51,759 - logger_File -INFO - User clicked on Sign in Option
+2023-02-21 18:53:51,963 - logger_File -INFO - user entered email ozy234@gmail.com and password America1@
+2023-02-21 18:53:52,049 - logger_File -INFO - user clicked on login button
+2023-02-21 18:53:52,460 - logger_File -INFO - user clicked on Account option
+2023-02-21 18:53:52,575 - logger_File -INFO - user clicked on add address option
+2023-02-21 18:55:09,049 - logger_File -INFO - React App is equal to React App
+2023-02-21 18:55:09,287 - logger_File -INFO - User clicked on Sign in Option
+2023-02-21 18:55:09,598 - logger_File -INFO - user entered email ozy234@gmail.com and password America1@
+2023-02-21 18:55:09,747 - logger_File -INFO - user clicked on login button
+2023-02-21 18:55:10,114 - logger_File -INFO - user clicked on Account option
+2023-02-21 18:55:10,256 - logger_File -INFO - user clicked on add address option
+2023-02-21 18:56:23,526 - logger_File -INFO - React App is equal to React App
+2023-02-21 18:56:23,781 - logger_File -INFO - User clicked on Sign in Option
+2023-02-21 18:56:24,042 - logger_File -INFO - user entered email ozy234@gmail.com and password America1@
+2023-02-21 18:56:24,109 - logger_File -INFO - user clicked on login button
+2023-02-21 18:56:24,498 - logger_File -INFO - user clicked on Account option
+2023-02-21 18:56:24,632 - logger_File -INFO - user clicked on add address option
