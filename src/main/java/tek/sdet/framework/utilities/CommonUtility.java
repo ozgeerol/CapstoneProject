@@ -84,6 +84,7 @@ public class CommonUtility extends BaseSetup {
         toClear.sendKeys(Keys.CONTROL + "a");
         toClear.sendKeys(Keys.DELETE);
     }
+    
 	
     public void selectByIndex(WebElement ele, int index) {
         Select select = new Select(ele);
@@ -186,6 +187,14 @@ public class CommonUtility extends BaseSetup {
             }
         }
     }
+	
+	public boolean isElementDisplayed(WebElement ele, String string) {
+		if (ele.isDisplayed()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
     
     public void selectCalendarDateWithJS(String date, WebElement element) {
         JavascriptExecutor js = ((JavascriptExecutor) getDriver());

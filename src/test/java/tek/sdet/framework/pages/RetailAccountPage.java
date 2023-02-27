@@ -1,5 +1,7 @@
 package tek.sdet.framework.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -85,37 +87,55 @@ public class RetailAccountPage extends BaseSetup {
 	@FindBy(xpath = "//button[normalize-space()='remove']")
 	public WebElement removeButton;
 
-	@FindBy(xpath = "//p[normalize-space()='Add Address']")
-	public WebElement addAdressButton;
+	@FindBy(xpath = "//div[@class='account__address-new']")
+	public WebElement addAddressOption;
 
 	@FindBy(xpath = "//select[@id='countryDropdown']")
-	public WebElement CountryDropDown;
+	public WebElement country;
 
-	@FindBy(xpath = "//input[@id='fullNameInput']")
-	public WebElement FullNameField;
-
+	@FindBy(id = "fullNameInput")
+	public WebElement fullNameField;
+	
 	@FindBy(xpath = "//input[@id='phoneNumberInput']")
 	public WebElement phoneNumberField;
-
-	@FindBy(xpath = "//input[@id='streetInput']")
-	public WebElement streetInputField;
-
-	@FindBy(xpath = "//input[@id='apartmentInput']")
-	public WebElement apartmentInputField;
-
-	@FindBy(xpath = "//input[@id='cityInput']")
-	public WebElement CityInputField;
-
-	@FindBy(xpath = "//select[@name='state']")
-	public WebElement selectState;
-
-	@FindBy(xpath = "//input[@id='zipCodeInput']")
-	public WebElement zipCodeField;
-
-	@FindBy(xpath = "//button[@id='addressBtn']")
-	public WebElement addressBtnField;
 	
-	@FindBy(xpath = "//div[contains(text(),'Address Added Successfully')]")
-	public WebElement addressAddedSuccessfully;
+	@FindBy(xpath = "//input[@id='streetInput']")
+	public WebElement streetAddressField;
+	
+	@FindBy(xpath = "//input[@id='apartmentInput']")
+	public WebElement apartmentNumber;
+	
+	@FindBy(id = "cityInput")
+	public WebElement cityField;
 
+	@FindBy(xpath = "(//select[@class='account__address-new-dropdown'])[2]")
+	public WebElement stateDropDown;
+	
+	@FindBy(id = "zipCodeInput")
+	public WebElement zipCodeField;
+	
+	@FindBy(id = "addressBtn")
+	public WebElement addYourAddressButton;
+
+	@FindBy(xpath = "//div[text()='Address Added Successfully']")
+	public WebElement addressAddedSuccessfullyMessage;
+	
+	@FindBy(xpath = "//button[normalize-space()='Edit']")
+	public WebElement editAddressButton;
+	
+	@FindBy(xpath = "//button[@id='addressBtn']")
+	public WebElement updateAddressButton;
+	
+	@FindBy(xpath = "//div[contains(text(),'Address Updated Successfully')]")
+	public WebElement addressUpdatedSuccessfully;
+	
+    @FindBy(xpath = "//button[normalize-space()='Remove']")
+    public WebElement removeAddressButton;
+    
+    
+    
+
+    
+    
+    
 }

@@ -4,13 +4,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebElement;
 
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import tek.sdet.framework.pages.POMFactory;
 import tek.sdet.framework.pages.RetailAccountPage;
 import tek.sdet.framework.utilities.CommonUtility;
+import tek.sdet.framework.utilities.DataGeneratorUtility;
 
 public class RetailAccountSteps extends CommonUtility {
 	POMFactory factory = new POMFactory();
@@ -150,42 +154,377 @@ public class RetailAccountSteps extends CommonUtility {
 		Thread.sleep(4000);
 	}
 
-	@When("User click on Add address option")
-	public void userClickOnAddAddressOption() throws InterruptedException {
-		click(factory.accountPage().addAdressButton);
-		logger.info("user clicked on add address option");
-		Thread.sleep(4000);
+	@When("User click on  Add address option")
+	public void userClickOnAddAddressOption() {
+		click(factory.accountPage().addAddressOption);
+		logger.info("user clicked on Add address option");
+
 	}
 
-	@When("user fill new address form with below information")
-	public void userFillNewAddressFormWithBelowInformation(DataTable dataTable) throws InterruptedException {
-		List<Map<String, String>> addressInfortmation = dataTable.asMaps(String.class, String.class);
-		sendText(factory.accountPage().CountryDropDown, addressInfortmation.get(0).get("country "));
-		sendText(factory.accountPage().FullNameField, addressInfortmation.get(0).get("fullName "));
-		sendText(factory.accountPage().phoneNumberField, addressInfortmation.get(0).get("phoneNumber "));
-		sendText(factory.accountPage().streetInputField, addressInfortmation.get(0).get("streetAddress "));
-		sendText(factory.accountPage().apartmentInputField, addressInfortmation.get(0).get(" apt  "));
-		sendText(factory.accountPage().CityInputField, addressInfortmation.get(0).get("  city   "));
-		sendText(factory.accountPage().selectState, addressInfortmation.get(0).get("  state  "));
-		sendText(factory.accountPage().zipCodeField, addressInfortmation.get(0).get("  zipCode  "));
-		logger.info("user filled new address with information");
-		Thread.sleep(4000);
+	@When("User fill new address form with below information")
+	public void userFllNewAddressFormWithBelowInformation(DataTable dataTable) {
+		List<List<String>> addressInfo = dataTable.asLists(String.class);
+		selectByVisibleText(factory.accountPage().country, DataGeneratorUtility.data(addressInfo.get(0).get(0)));
+		sendText(factory.accountPage().fullNameField, DataGeneratorUtility.data(addressInfo.get(0).get(1)));
+		sendText(factory.accountPage().phoneNumberField, DataGeneratorUtility.data(addressInfo.get(0).get(2)));
+		sendText(factory.accountPage().streetAddressField, DataGeneratorUtility.data(addressInfo.get(0).get(3)));
+		sendText(factory.accountPage().apartmentNumber, DataGeneratorUtility.data(addressInfo.get(0).get(4)));
+		sendText(factory.accountPage().cityField, DataGeneratorUtility.data(addressInfo.get(0).get(5)));
+		selectByVisibleText(factory.accountPage().stateDropDown, DataGeneratorUtility.data(addressInfo.get(0).get(6)));
+		sendText(factory.accountPage().zipCodeField, DataGeneratorUtility.data(addressInfo.get(0).get(7)));
+		logger.info("user filled the new address form with information provided in data table");
 
 	}
 
 	@When("User click Add Your Address button")
-	public void userClickAddYourAddressButton() throws InterruptedException {
-		click(factory.accountPage().addressBtnField);
-		logger.info("user clicked Add Your Address button");
+	public void userClickAddYourAddressButton() {
+		click(factory.accountPage().addYourAddressButton);
+		logger.info("user clicked on Add your Address button");
+	}
+
+	@Then("a message should be displayedd2 {string}")
+	public void aMessageShouldBeDisplayedd2(String expectedMessage) {
+		waitTillPresence(factory.accountPage().addressAddedSuccessfullyMessage);
+		Assert.assertEquals(expectedMessage, factory.accountPage().addressAddedSuccessfullyMessage.getText());
+
+	}
+
+	@When("User click on edit address option")
+	public void userClickOnEditAddressOption() throws InterruptedException {
+
+		click(factory.accountPage().editAddressButton);
+		logger.info("user clicked on edit address option");
+		Thread.sleep(4000);
+
+	}
+
+	@When("User edit new address form with below information")
+	public void userEditNewAddressFormWithBelowInformation(DataTable dataTable) throws InterruptedException {
+
+		List<List<String>> editAddressInfortmation = dataTable.asLists(String.class);
+		selectByVisibleText(factory.accountPage().country,
+				DataGeneratorUtility.data(editAddressInfortmation.get(0).get(0)));
+		clearTextUsingSendKeys(factory.accountPage().fullNameField);
+		sendText(factory.accountPage().fullNameField, DataGeneratorUtility.data(editAddressInfortmation.get(0).get(1)));
+		// clearTextUsingSendKeys(factory.accountPage().phoneNumberField);
+		sendText(factory.accountPage().phoneNumberField,
+				DataGeneratorUtility.data(editAddressInfortmation.get(0).get(2)));
+		// clearTextUsingSendKeys(factory.accountPage().streetAddressField);
+		sendText(factory.accountPage().streetAddressField,
+				DataGeneratorUtility.data(editAddressInfortmation.get(0).get(3)));
+		clearTextUsingSendKeys(factory.accountPage().apartmentNumber);
+		sendText(factory.accountPage().apartmentNumber,
+				DataGeneratorUtility.data(editAddressInfortmation.get(0).get(4)));
+		clearTextUsingSendKeys(factory.accountPage().cityField);
+		sendText(factory.accountPage().cityField, DataGeneratorUtility.data(editAddressInfortmation.get(0).get(5)));
+		selectByVisibleText(factory.accountPage().stateDropDown,
+				DataGeneratorUtility.data(editAddressInfortmation.get(0).get(6)));
+		clearTextUsingSendKeys(factory.accountPage().zipCodeField);
+		sendText(factory.accountPage().zipCodeField, DataGeneratorUtility.data(editAddressInfortmation.get(0).get(7)));
+		logger.info("User edited new address form");
+		Thread.sleep(5000);
+	}
+
+
+	@When("User clcik on Update Your Card button")
+	public void userClcikOnUpdateYourCardButton() throws InterruptedException {
+		click(factory.accountPage().addYourAddressButton);
+		logger.info("user clicked on Update address option");
 		Thread.sleep(4000);
 	}
 
-//	@Then("a message should be displayed ‘Address Added Successfully’")
-//	public void aMessageShouldBeDisplayedAddressAddedSuccessfully() throws InterruptedException {
-//		waitTillPresence(factory.accountPage().addressAddedSuccessfully);
-//		Assert.assertTrue(isElementDisplayed(factory.accountPage().addressAddedSuccessfully));
-//		logger.info("user address information added");
-//		Thread.sleep(4000);
+	@Then("a message should be displayeddd1 {string}")
+	public void aMessageShouldBeDisplayeddd1(String expectedMessage) throws InterruptedException {
+		waitTillPresence(factory.accountPage().addressUpdatedSuccessfully);
+		Assert.assertEquals(expectedMessage, factory.accountPage().addressUpdatedSuccessfully.getText());
+		Thread.sleep(5000);
+		
 	}
-
+	
+	@When("User click on remove option of Address section")
+	public void userClickOnRemoveOptionOfAddressSection() throws InterruptedException {
+		click(factory.accountPage().removeAddressButton);
+		logger.info("user clicked on remove option of Address section");
+		Thread.sleep(5000);
+	    
+	}
+	@Then("Address details should be removed")
+	public void addressDetailsShouldBeRemoved() {
+		logger.info("address details should be removed");
+		
+		
+	}
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		
+		
+		
+		
+	
 
